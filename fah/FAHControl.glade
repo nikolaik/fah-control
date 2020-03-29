@@ -3361,6 +3361,7 @@ Would you like to configure your identity now?</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">True</property>
                                                             <property name="invisible_char">●</property>
+                                                            <property name="width_chars">7</property>
                                                             <property name="primary_icon_activatable">False</property>
                                                             <property name="secondary_icon_activatable">False</property>
                                                             <property name="adjustment">port_adjustment</property>
@@ -3643,6 +3644,7 @@ Would you like to configure your identity now?</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">True</property>
                                                             <property name="invisible_char">●</property>
+                                                            <property name="width_chars">8</property>
                                                             <property name="primary_icon_activatable">False</property>
                                                             <property name="secondary_icon_activatable">False</property>
                                                             <property name="adjustment">team_adjustment</property>
@@ -4469,6 +4471,7 @@ Warning, changes you make here may render your client inaccessible even from the
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">True</property>
                                                             <property name="invisible_char">●</property>
+                                                            <property name="width_chars">6</property>
                                                             <property name="primary_icon_activatable">False</property>
                                                             <property name="secondary_icon_activatable">False</property>
                                                             <property name="adjustment">command_port_adjustment</property>
@@ -4962,6 +4965,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">True</property>
                                                             <property name="invisible_char">•</property>
+                                                            <property name="width_chars">7</property>
                                                             <property name="primary_icon_activatable">False</property>
                                                             <property name="secondary_icon_activatable">False</property>
                                                             <property name="adjustment">proxy_port_adjustment</property>
@@ -7450,6 +7454,7 @@ Folding slots can be one of three types, Uniprocessor, SMP or GPU.  Representing
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="invisible_char">•</property>
+                            <property name="width_chars">8</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="adjustment">viz_width_adjustment</property>
@@ -7479,6 +7484,7 @@ Folding slots can be one of three types, Uniprocessor, SMP or GPU.  Representing
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="invisible_char">•</property>
+                            <property name="width_chars">8</property>
                             <property name="primary_icon_activatable">False</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="adjustment">viz_height_adjustment</property>
