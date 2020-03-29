@@ -46,23 +46,11 @@ if sys.platform == 'darwin':
         NSHumanReadableCopyright = 'Copyright 2010-2018 foldingathome.org',
         )
 
-    options = dict(
-            argv_emulation = False,
-            includes = 'cairo, pango, pangocairo, atk, gobject, gio',
-            iconfile = 'images/FAHControl.icns',
-            resources = ['/opt/local/share/themes'],
-            plist = plist,
-            )
-
     extra_opts = dict(
-        app = [app],
-        options = {'py2app': options},
-        setup_requires = ['py2app'],
+        # app = [app],
+        scripts=[app],
+        install_requires='pygobject >= 3.32.2',
     )
-
-    # Hack around py2app problem with python scripts with out .py extension.
-    from py2app.util import PY_SUFFIXES
-    PY_SUFFIXES.append('')
 
 elif sys.platform == 'win32':
     from cx_Freeze import setup, Executable
@@ -84,7 +72,7 @@ else:
         packages = find_packages(),
         scripts = [app],
         data_files = [('/usr/share/pixmaps', ['images/FAHControl.png'])],
-        install_requires = 'gtk2 >= 2.14.0',
+        install_requires = 'pygobject >= 3.32.2',
         include_package_data = True,
         )
 
