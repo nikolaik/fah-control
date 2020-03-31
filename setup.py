@@ -72,7 +72,7 @@ elif sys.platform == 'win32':
     options = {
         'build_exe': {
             'build_exe': 'gui',
-            'includes': 'gtk'
+            #'includes': 'gtk',
             }
         }
     extra_opts = dict(executables = [e], options = options)
