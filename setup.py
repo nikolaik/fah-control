@@ -64,18 +64,18 @@ if sys.platform == 'darwin':
     from py2app.util import PY_SUFFIXES
     PY_SUFFIXES.append('')
 
-elif sys.platform == 'win32':
-    from cx_Freeze import setup, Executable
+#elif sys.platform == 'win32':
+    #from cx_Freeze import setup, Executable
 
     # Change base to 'Console' for debugging
-    e = Executable(app, base = 'Win32GUI', icon = 'images/FAHControl.ico')
-    options = {
-        'build_exe': {
-            'build_exe': 'gui',
-            #'includes': 'gtk',
-            }
-        }
-    extra_opts = dict(executables = [e], options = options)
+    #e = Executable(app, base = 'Win32GUI', icon = 'images/FAHControl.ico')
+    #options = {
+    #    'build_exe': {
+    #        'build_exe': 'gui',
+    #        #'includes': 'gtk',
+    #        }
+    #    }
+    #extra_opts = dict(executables = [e], options = options)
 
 else:
     from setuptools import setup, find_packages

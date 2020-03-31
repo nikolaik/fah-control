@@ -30,6 +30,7 @@ FIXME: I'm not sure if you have to install the packages `mingw-w64-x86_64-toolch
 
 Now you can start FAHControl:
 
+    python setup.py build
     python FAHControl
 
 Optionally install for development / building:
@@ -38,5 +39,6 @@ Optionally install for development / building:
 
 For building an executable:
 
+    python setup.py build
     pip install pyinstaller
     pyinstaller FAHControl --windowed
