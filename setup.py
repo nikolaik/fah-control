@@ -16,8 +16,8 @@ if os.path.exists(in_file):
     input = None
     output = None
     try:
-        input = open(in_file, 'r')
-        output = open(out_file, 'w')
+        input = open(in_file, 'r', encoding = "utf8")
+        output = open(out_file, 'w', encoding = "utf8")
 
         output.write('# -*- coding: utf8 -*-\n\n')
         output.write('glade_data = """')
@@ -89,12 +89,12 @@ else:
         )
 
 try:
-    version = open('version.txt').read().strip()
+    version = open('version.txt', encoding = "utf8").read().strip()
     version.split('.')
 except: version = '0.0.0'
 
 if not os.path.exists('fah/Version.py') or version != '0.0.0':
-    open('fah/Version.py', 'w').write('version = \'%s\'\n' % version)
+    open('fah/Version.py', 'w', encoding = "utf8").write('version = \'%s\'\n' % version)
 
 description = \
 '''Folding@home is a distributed computing project using volunteered
@@ -124,5 +124,5 @@ setup(
     **extra_opts)
 
 if sys.platform == 'darwin':
-    with open('package-description.txt', 'w') as f:
+    with open('package-description.txt', 'w', encoding = "utf8") as f:
         f.write(short_description.strip())
