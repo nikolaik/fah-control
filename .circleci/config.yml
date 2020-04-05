@@ -1,0 +1,41 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: debian:buster
+    steps:
+      - run:
+          name: Install build dependencies
+          # Requires runtime dependencies atm, since pybuild imports fah when running tests
+          command: apt update && apt-get install build-essential fakeroot gir1.2-gtk-3.0 git patch python-all python3-all python3-gi python3-gi-cairo python3-setuptools python3-stdeb --no-install-recommends -y
+      - checkout
+      - run:
+          name: Patch stdeb to work
+          command: |
+            cd /usr/lib/python3/dist-packages
+            patch -p0 < ~/project/.circleci/patches/stdeb-remove-deprecated-dh_desktop-call.patch
+            patch -p0 < ~/project/.circleci/patches/stdeb-misc.patch
+      # TODO: version build
+      - run:
+          name: Build deb
+          command: python3 setup.py --command-packages stdeb.command sdist_dsc --with-python3=true --with-python2=false bdist_deb
+      - run:
+          name: Move deb to an artifacts dir
+          command: |
+            mkdir -p artifacts
+            cp deb_dist/*.deb artifacts
+      - store_artifacts:
+          path: artifacts
+      # TODO: create/upload to github release
+
+workflows:
+   version: 2
+   build_on_linux_branch:
+     jobs:
+       - build:
+           filters:
+             branches:
+               only:
+                 - build-linux
+
+   # TODO: run on git tag

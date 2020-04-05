@@ -1,0 +1,11 @@
+--- stdeb/util.py	2020-04-05 21:47:07.194733583 +0000
++++ stdeb/util-patched.py	2020-04-05 21:46:48.686982101 +0000
+@@ -1469,3 +1469,8 @@
+ %(dh_binary_indep_lines)s
+ %(dh_installmime_indep_line)s
+ """
++
++RULES_BINARY_ALL_TARGET = """
++binary:
++	dh binary-indep --with python3 --buildsystem=pybuild
++"""
