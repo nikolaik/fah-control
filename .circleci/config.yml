@@ -15,7 +15,12 @@ jobs:
             cd /usr/lib/python3/dist-packages
             patch -p0 < ~/project/.circleci/patches/stdeb-remove-deprecated-dh_desktop-call.patch
             patch -p0 < ~/project/.circleci/patches/stdeb-misc.patch
-      # TODO: version build
+
+      - run:
+          name: Version
+          # TODO: version build
+          # command: echo -n $CIRCLE_TAG  | cut -c2- > version.txt
+          command: echo "8.0.0" > version.txt
       - run:
           name: Build deb
           command: python3 setup.py --command-packages stdeb.command sdist_dsc --with-python3=true --with-python2=false bdist_deb
@@ -37,5 +42,7 @@ workflows:
              branches:
                only:
                  - build-linux
-
-   # TODO: run on git tag
+#             branches:
+#               ignore: /.*/
+#             tags:
+#               only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
