@@ -16,8 +16,8 @@ if os.path.exists(in_file):
     input = None
     output = None
     try:
-        input = open(in_file, 'r')
-        output = open(out_file, 'w')
+        input = open(in_file, 'r', encoding = "utf8")
+        output = open(out_file, 'w', encoding = "utf8")
 
         output.write('# -*- coding: utf8 -*-\n\n')
         output.write('glade_data = """')
@@ -64,18 +64,18 @@ if sys.platform == 'darwin':
     from py2app.util import PY_SUFFIXES
     PY_SUFFIXES.append('')
 
-elif sys.platform == 'win32':
-    from cx_Freeze import setup, Executable
+#elif sys.platform == 'win32':
+    #from cx_Freeze import setup, Executable
 
     # Change base to 'Console' for debugging
-    e = Executable(app, base = 'Win32GUI', icon = 'images/FAHControl.ico')
-    options = {
-        'build_exe': {
-            'build_exe': 'gui',
-            'includes': 'gtk'
-            }
-        }
-    extra_opts = dict(executables = [e], options = options)
+    #e = Executable(app, base = 'Win32GUI', icon = 'images/FAHControl.ico')
+    #options = {
+    #    'build_exe': {
+    #        'build_exe': 'gui',
+    #        #'includes': 'gtk',
+    #        }
+    #    }
+    #extra_opts = dict(executables = [e], options = options)
 
 else:
     from setuptools import setup, find_packages
@@ -89,12 +89,12 @@ else:
         )
 
 try:
-    version = open('version.txt').read().strip()
+    version = open('version.txt', encoding = "utf8").read().strip()
     version.split('.')
 except: version = '0.0.0'
 
 if not os.path.exists('fah/Version.py') or version != '0.0.0':
-    open('fah/Version.py', 'w').write('version = \'%s\'\n' % version)
+    open('fah/Version.py', 'w', encoding = "utf8").write('version = \'%s\'\n' % version)
 
 description = \
 '''Folding@home is a distributed computing project using volunteered
@@ -125,5 +125,5 @@ setup(
     **extra_opts)
 
 if sys.platform == 'darwin':
-    with open('package-description.txt', 'w') as f:
+    with open('package-description.txt', 'w', encoding = "utf8") as f:
         f.write(short_description.strip())

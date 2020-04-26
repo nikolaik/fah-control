@@ -200,7 +200,7 @@ class FAHControl(SingleAppServer):
         Gtk.Window.set_default_icon(get_icon('small'))
 
         # Filter glade
-        if len(glade) < 1024: glade = open(glade, 'r').read()
+        if len(glade) < 1024: glade = open(glade, 'r', encoding = "utf8").read()
         glade = re.subn('class="GtkLabel" id="wlabel',
                         'class="WrapLabel" id="wlabel', glade)[0]
         if sys.platform == 'darwin':
